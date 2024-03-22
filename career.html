@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Finance - FinPro</title>
+  <script>const incomeAmountInput = document.getElementById('incomeAmount');
+  const addIncomeButton = document.getElementById('addIncome');
+  const expenseAmountInput = document.getElementById('expenseAmount');
+  const expenseCategorySelect = document.getElementById('expenseCategory');
+  const addExpenseButton = document.getElementById('addExpense');
+  const totalIncomeDisplay = document.getElementById('totalIncome');
+  const totalExpenseDisplay = document.getElementById('totalExpense');
+  const remainingBalanceDisplay = document.getElementById('remainingBalance');
+
+  let totalIncome = 0;
+  let totalExpense = 0;
+
+  addIncomeButton.addEventListener('click', function() {
+    const income = parseFloat(incomeAmountInput.value);
+    if (!isNaN(income) && income > 0) {
+      totalIncome += income;
+      totalIncomeDisplay.textContent = `Total Income: $${totalIncome.toFixed(2)}`;
+      updateBalance();
+      incomeAmountInput.value = '';
+    }
+  });
+
+  addExpenseButton.addEventListener('click', function() {
+    const expense = parseFloat(expenseAmountInput.value);
+    const category = expenseCategorySelect.value;
+    if (!isNaN(expense) && expense > 0 && category) {
+      totalExpense += expense;
+      totalExpenseDisplay.textContent = `Total Expense: $${totalExpense.toFixed(2)}`;
+      updateBalance();
+      expenseAmountInput.value = '';
+      expenseCategorySelect.value = '';
+    }
+  });
+
+  function updateBalance() {
+    const remainingBalance = totalIncome - totalExpense;
+    remainingBalanceDisplay.textContent = `Remaining Balance: $${remainingBalance.toFixed(2)}`;
+  }
+  </script>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+      overflow-x:hidden;
+    }
+    .first-img{
+      width:1550px;
+      height:400px;
+      overflow-x: hidden;
+      overflow-y:hidden ;
+      background-size: cover;
+    }
+   footer{
+      margin:0;
+     text-align: center;
+    }
+   .first-head{
+     position:absolute;
+     text-align:left;
+     font-size:50px;
+     color: white;
+     width: 100%;
+     top: 170px;
+     left:50px;
+   }
+   .middle-read{
+     text-align: center;
+padding-top:50px;
+   }
+   #sec-read-head{
+     font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+     color: rgba(0,0,0,0.85);
+     font-size: 42px;
+     font-weight: 600;
+   }
+   .sec-read-para{
+     padding-left:300px;
+     padding-right:300px;
+     margin-top: 24px;
+     line-height: 40px;
+     text-align: center;
+     word-break: break-word;
+     white-space: pre-wrap;
+     font-size:25px;
+   }
+   .jobs{
+     text-align: center;
+padding-bottom:50px;
+   }
+   .head-jobs{
+     font-size: 28px;
+     line-height: 1em;
+     font-family: "Gotham", Open-sans, Serif, serif;
+     color: #212121;
+	overflow-y: hidden;
+   }
+    nav{
+      background: #040e16;
+      height: 80px;
+      width: 100%;
+      overflow-y: hidden;
+    }
+    label.logo{
+      color:white;
+      font-size:35px;
+      line-height: 80px;
+      padding:0 100px;
+      font-weight:bold;
+    }
+    nav ul{
+      float:right;
+      margin-right:20px;
+    }
+    nav ul li {
+      display:inline-block;
+      line-height: 80px;
+      margin:0 5px;
+    }
+    nav ul li a{
+      color:white;
+      font-size: 17px;
+      padding: 7px 13px;
+      border-radius: 3px;
+      text-transform: uppercase;
+    }
+    a.active,a:hover{
+      background:#dcdfe2;
+      transition:.5s;
+    }
+    .checkbtn{
+      font-size:30px;
+      color:white;
+      float:right;
+      line-height: 80px;
+      margin-right: 40px;
+      cursor:pointer;
+      display:none;
+    }
+    #check{
+      display:none;
+    }
+    @media(max-width: 952px){
+      label.logo{
+        font-size:30px;
+        padding-left: 50px;
+      }
+      nav ul li a{
+        font-size:16px;
+
+      }
+    }
+    @media (max-width: 858px){
+      .checkbtn{
+        display:block;
+      }
+      ul{
+        position:fixed;
+        width:100%;
+        height:100vh;
+        background: #2c3e50;
+        top:80px;
+        left:-100%;
+        text-align:center;
+        transition: all .5s;
+	
+      }
+      nav ul li{
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+	
+      }
+      nav ul li a{
+        font-size: 20px;
+	text-decoration:none;
+      }
+      a:hover,a.active{
+        background:none;
+        color: #1968a4
+      }
+      #check:checked ~ ul{
+        left: 0;
+      }
+    }
+    *{
+      padding:0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    footer{
+      background-color: #111;
+    }
+    footercontainer{
+      width:100%;
+      padding:70px 30px 20px;
+
+    }
+    .social-icons{
+      display:flex;
+      justify-content: center;
+    }
+    .social-icons a{
+      text-decoration: none;
+      padding:10px;
+      background-color: white;
+      margin: 10px;
+      border-radius:50%;
+
+    }
+    .social-icons a i{
+      font-size: 2em;
+      color: black;
+      opacity: 0.9;
+    }
+    .social-icons a:hover{
+      background-color: #111;
+      transition: 0.5s;
+    }
+    .social-icons a:hover i{
+      color:white;
+      transition:0.5s;
+
+    }
+    .footernav{
+      margin: 30px 0;
+    }
+    .footernav ul{
+      display: flex;
+      justify-content: center;
+      list-style-type:nonedisc;
+    }
+    .footernav ul li a{
+      color:white;
+      margin: 20px;
+      text-decoration: none;
+      font-size: 1.3em;
+      opacity: 0.7;
+      transition: 0.5s;
+    }
+    .footernav ul li a:hover{
+      opacity:1;
+    }
+    .footerbottom{
+      background-color: #000;
+      padding: 20px;
+      text-align: center;
+    }
+    .footerbottom p{
+      color:white;
+    }
+    .designer{
+      opacity: 0.7;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 400;
+      margin: 0px 5px;
+    }
+    @media (max-width: 700px){
+      .footernav ul{
+        flex-direction: column;
+      }
+      .footernav ul li{
+        width:100%;
+        text-align: center;
+        margin:10px;}}
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+              }
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .containerf {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+              }
+  </style>
+</head>
+<body>
+<nav>
+  <input type="checkbox" id="check">
+  <ul>
+    <li><a href="C:\Users\HP\Downloads\mainpage.html" style="text-decoration:none">Home</a></li>
+    <li><a href="C:\Users\HP\Downloads\career.html" style="text-decoration:none">Finance</a></li>
+    <li><a href="C:\Users\HP\Downloads\About-us.html" style="text-decoration:none">About us</a></li>
+    <li><a href="#footercontainer" style="text-decoration:none">Contact</a></li>
+  </ul>
+  <label for="check" class="checkbtn"><i class="fa-solid fa-bars"></i></label>
+  <label class="logo" style="font-family: lobster,serif;">FinPro</label>
+</nav>
+<section>
+    <footer>
+      <div class="first-img">
+        <img id="img" src="https://www.digitalmarketer.com/wp-content/uploads/2021/10/DigitalMarketer_bg1.jpg" alt="Team Working">
+      </div>
+      <div class="first-head">
+        <h3>"The key to money is to stay invested"</h3>
+    </div>
+    </footer>
+</section>
+<section>
+  <div>
+    <div class="containerf">
+      <h1>Finance Manager</h1>
+      <div>
+        <label for="income">Monthly Income (INR):</label>
+        <input type="number" id="income" placeholder="Enter your monthly income">
+      </div>
+      <div>
+        <label for="savingsGoal">Savings Goal (INR):</label>
+        <input type="number" id="savingsGoal" placeholder="Enter your savings goal">
+      </div>
+      <button onclick="calculate()">Calculate</button>
+      <div id="result"></div>
+    </div>
+
+    <script>function calculate() {
+      var income = parseFloat(document.getElementById('income').value);
+      var savingsGoal = parseFloat(document.getElementById('savingsGoal').value);
+
+      if (isNaN(income) || isNaN(savingsGoal)) {
+        document.getElementById('result').innerHTML = '<p>Please enter valid income and savings goal amounts.</p>';
+        return;
+      }
+
+      var savings = savingsGoal;
+      var remainingIncome = income - savings;
+
+      var investment = remainingIncome * 0.4;
+      var monthlySpendings = remainingIncome * 0.3;
+      var leisureActivities = remainingIncome * 0.3;
+
+      var savingsPercentage = (savings / income) * 100;
+
+      document.getElementById('result').innerHTML = `
+            <p>Monthly Income: ₹${income.toFixed(2)}</p>
+            <p>Savings Goal: ₹${savingsGoal.toFixed(2)}</p>
+            <p>Savings (Percentage): ${savingsPercentage.toFixed(2)}%</p>
+            <p>Investment (40%): ₹${investment.toFixed(2)}</p>
+            <p>Monthly Spendings (30%): ₹${monthlySpendings.toFixed(2)}</p>
+            <p>Leisure Activities (30%): ₹${leisureActivities.toFixed(2)}</p>
+        `;
+      // Chart.js
+      var ctx = document.getElementById('myChart').getContext('2d');
+      var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: ['Investment', 'Monthly Spendings', 'Leisure Activities'],
+          datasets: [{
+            label: 'Expenses Distribution',
+            data: [investment, monthlySpendings, leisureActivities],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.5)',
+              'rgba(54, 162, 235, 0.5)',
+              'rgba(255, 206, 86, 0.5)',
+            ],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          title: {
+            display: true,
+            text: 'Expenses Distribution'
+          },
+          legend: {
+            position: 'bottom',
+          }
+        }
+      });
+    }
+    </script>
+
+  </div>
+  </div>
+</section>
+<section>
+</section>
+<section>
+  <div class="container">
+    <h2>Expense Tracker</h2>
+    <input type="number" id="monthlyIncome" placeholder="Monthly Income">
+    <input type="text" id="expenseName" placeholder="Expense Name">
+    <input type="number" id="expenseAmount" placeholder="Expense Amount">
+    <button onclick="addExpense()">Add Expense</button>
+    <table id="expenseTable">
+      <thead>
+      <tr>
+        <th>Expense Name</th>
+        <th>Amount</th>
+      </tr>
+      </thead>
+      <tbody id="expenseList">
+      </tbody>
+    </table>
+    <p>Total Expenses: <span id="totalExpenses">0</span></p>
+    <p id="expenseWarning" style="color: red;"></p>
+  </div>
+
+  <script>
+    let expenses = [];
+    let monthlyIncome = 0;
+
+    function addExpense() {
+      const name = document.getElementById('expenseName').value;
+      const amount = parseFloat(document.getElementById('expenseAmount').value);
+
+      if (name && amount) {
+        expenses.push({ name, amount });
+        document.getElementById('expenseList').innerHTML += `
+                <tr>
+                    <td>${name}</td>
+                    <td>${amount}</td>
+                </tr>
+            `;
+        updateTotalExpenses();
+        checkExpenseWarning();
+      } else {
+        alert("Please enter both expense name and amount.");
+      }
+
+      document.getElementById('expenseName').value = '';
+      document.getElementById('expenseAmount').value = '';
+    }
+
+    function updateTotalExpenses() {
+      const totalExpenses = expenses.reduce((acc, expense) => acc + expense.amount, 0);
+      document.getElementById('totalExpenses').textContent = totalExpenses.toFixed(2);
+    }
+
+    function checkExpenseWarning() {
+      if (monthlyIncome > 0) {
+        const expensePercentage = (expenses.reduce((acc, expense) => acc + expense.amount, 0) / monthlyIncome) * 100;
+        if (expensePercentage > 40) {
+          document.getElementById('expenseWarning').textContent = "You need to manage your money wisely. Your expenses are more than 40% of your income.";
+        } else {
+          document.getElementById('expenseWarning').textContent = "";
+        }
+      }
+    }
+
+    document.getElementById('monthlyIncome').addEventListener('change', function () {
+      monthlyIncome = parseFloat(this.value);
+      checkExpenseWarning();
+    });
+  </script>
+</section>
+  <footer>
+    <div class="footercontainer" id="footercontainer">
+      <div class="social-icons">
+        <a href="www.facebook.com"><i class="fa-brands fa-facebook"></i></a>
+        <a href="www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
+        <a href="www.twitter.com"><i class="fa-brands fa-twitter"></i></a>
+        <a href="www.youtube.com"><i class="fa-brands fa-youtube"></i></a>
+	
+      </div>
+      <div class="footernav">
+        <ul>
+
+          <li><a src="C:\Users\HP\Downloads\mainpage.html">Home</a></li>
+          <li><a src="C:\Users\HP\Downloads\career.html">Finance</a></li>
+          <li><a src="C:\Users\HP\Downloads\About-us.html">About us</a></li>
+          <li><a src="#footercontainer">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+	<h3 style="color:white; text-align:center">Call Now: 7902202985<br>
+Email : FinPro@gmail.com</h3>
+    <div class="footerbottom">
+      <p>Copyright &copy;2023</p>
+    </div>
+  </footer>
+</body>
+</html>
